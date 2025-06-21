@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - EQUIWORK</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: rgb(30, 29, 29);;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contact-wrapper {
+      max-width: 1100px;
+      margin: 120px auto 60px;
+      padding: 2rem;
+      background: #2d2d2d;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-wrapper h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .contact-wrapper p {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: white;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .contact-form {
+      flex: 1 1 60%;
+    }
+
+    .contact-form label {
+      display: block;
+      margin: 1rem 0 0.3rem;
+      font-weight: 500;
+      color: white;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+    }
+
+    .contact-form button {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      width: 100%;
+      background: #2e7d66;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: #265e50;
+    }
+
+    .contact-info {
+      flex: 1 1 35%;
+      background: rgba(118, 115, 115, 0.457);
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 1rem;
+      padding-left: 120px;
+      padding-top: 50px;
+      color: white;
+    }
+
+    .contact-info p {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      color: white;
+    }
+    .social-icons{
+      display: flex;
+      justify-content: center;
+      gap: 15;
+      margin-top: 20px;
+    }
+    .social-icons a {
+      font-size: 1.5rem;
+      color: #272727;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #2e7d66;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        flex-direction: column;
+      }
+    }
+
+    /* .team-highlight {
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.team-highlight h3 {
+  margin-top: 15px;
+  padding-right: 50px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.team-highlight p {
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.team-image {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+} */
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div id="navbar" class="obj-width">
+        <a href="index.html"><img class="logo"
+        src ="images/idk.png" alt="" ></a>
+        <ul id ="menu">
+            <li><a href ="index.html">Home</a></li>
+            <!-- <li><a href="browsejob.html">Browse Jobs</a></li> -->
+            <li class="dropdown">
+                <a href="#">Community <i class='bx bx-chevron-down'></i></a>
+                <ul class="dropdown-menu">
+                  <li><a href="community-women.html">Women</a></li>
+                  <li><a href="community-Lgbtq.html">LGBTQ+</a></li>                  
+                  <li><a href="community-minorities.html">Minorities</a></li>
+                </ul>
+              </li>                      
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="employer.html">Employer Login</a></li>
+            <a href="validate.html" id="w_btn" class="join-link">Join</a>
+            
+        </ul>
+        <i id="bar" class='bx bx-menu'></i>
+    </div>
+ </header>
+
+  <!-- Contact Section -->
+  <section class="contact-wrapper">
+    <h2>Contact Us</h2>
+    <p>Have questions, feedback, or partnership ideas? We'd love to hear from you.</p>
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <div class="contact-header">
+          <h2><i class='bx bx-envelope'></i> Get in Touch</h2>
+          <p>Have a question, proposal, or just want to say hello? We're happy to hear from you.</p>
+        </div>
+        <form id="contactForm">
+
+          <label for="name">Your Name*</label>
+          <input type="text" id="name" required>
+
+          <label for="email">Your Email*</label>
+          <input type="email" id="email" required>
+
+          <label for="type">Query Type*</label>
+          <select id="type" required>
+            <option value="">Select...</option>
+            <option>Support</option>
+            <option>Partnership</option>
+            <option>Feedback</option>
+            <option>Other</option>
+          </select>
+
+          <label for="message">Your Message*</label>
+          <textarea id="message" rows="5" maxlength="300" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Reach Us</h3>
+        <p><i class='bx bx-map'></i> Block-2 AIML ,GRIET,Bachupally,Hyderabad,Telangana-500084</p>
+        <p><i class='bx bx-phone-call'></i> +91 96000 52430</p>
+        <p><i class='bx bx-mail-send'></i> info@equiwork.org</p>
+      
+        <div class="social-icons">
+          <a href="#"><i class='bx bxl-facebook-square'></i></a>
+          <a href="#"><i class='bx bxl-instagram'></i></a>
+          <a href="#"><i class='bx bxl-twitter'></i></a>
+          <a href="#"><i class='bx bxl-linkedin'></i></a>
+        </div>
+        <div class="team-highlight">
+          <img src="images/contact.svg" alt="Our Team" class="team-image" />
+          <h4>MEET AND CONTACT PEOPLE</h4>
+          <p>We're a passionate team dedicated to equity, inclusion, and opportunity for all. Together, we’re making workplaces fairer, one step at a time. 🤝</p>
+        </div>
+      </div>      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="obj-width">
+        <div class="top">
+            <div>
+                <img class ="logo" src="images/idk.png" alt="">
+                <p>Search your desired jobs</p>
+            </div>
+            <div>
+                <a href="">
+                    <i class='bx bxl-facebook-square'></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-instagram' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-youtube' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-github' ></i>
+                </a>
+                <a href="">
+                  <i class='bx bxl-linkedin'></i>
+              </a>
+                
+            </div>
+  
+        </div>
+        <div class="bottom">
+            <div>
+                <h3>Pojects</h3>
+                <a href="#">changelog</a>
+                <a href="#">staus</a>
+                <a href="#">licence</a>
+                <a href="#">all version</a>
+            </div>
+            <div>
+                <h3>community </h3>
+                <a href="#">Github</a>
+                <a href="#">issues</a>
+                <a href="#">projects</a>
+                <a href="#">twitter</a>
+            </div>
+            <div>
+                <h3>help</h3>
+                <a href="#">support</a>
+                <a href="#">trouble shoot</a>
+                <a href="contact.html">contact us</a>
+            </div>
+            <div>
+                <h3>others</h3>
+                <a href="#">terms and services</a>
+                <a href="#">privacy and policy</a>
+                <a href="#">licence</a>
+                
+            </div>
+        </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+  
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        query_type: document.getElementById('type').value,
+        message: document.getElementById('message').value
+      };
+  
+      try {
+      const res = await fetch('http://localhost:3000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await res.json();
+      alert(result.message);
+
+      // ✅ Reset the form after successful submission
+      document.getElementById('contactForm').reset();
+    } catch (err) {
+      alert("Something went wrong. Please try again.");
+      console.error(err);
+    }
+  });
+  </script>
+</body>
+</html>

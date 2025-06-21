@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apply for Job</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f7f6;
+      color: #333;
+    }
+
+    .main-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .job-info {
+      flex: 1;
+      background: #2e7d66;
+      color: #f3fffc;
+      padding: 40px 30px;
+    }
+
+    .job-info h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .job-info p {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    .job-info .perks {
+      margin-top: 20px;
+    }
+
+    .job-info .perks li {
+      list-style: none;
+      padding: 6px 0;
+      font-size: 14px;
+    }
+
+    .job-info .quote {
+      margin-top: 30px;
+      font-style: italic;
+      color: #d1ffec;
+    }
+
+    .form-side {
+      flex: 1;
+      padding: 40px 30px;
+    }
+
+    .form-side h2 {
+      text-align: center;
+      color: #2e7d66;
+      margin-bottom: 30px;
+      font-size: 26px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 0;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #f9f9f9;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: #2e7d66;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #265e50;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .main-wrapper {
+        flex-direction: column;
+      }
+
+      .job-info, .form-side {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+  <!-- Left: Job Info -->
+  <div class="job-info">
+    <a href="jobs.html" class="back-btn" style="color: #d1ffec; text-decoration: none;">← Back to Jobs</a>
+  
+    <h2>🌍 Opportunity for All</h2>
+  
+    <p>We believe talent knows no boundaries. Whether you're a woman, part of a minority group, or a newcomer seeking a fresh start — this platform was built for you.</p>
+  
+    <ul class="perks" style="margin-top: 20px;">
+      <li>✅ Inclusive and respectful work culture</li>
+      <li>✅ Remote-first roles with flexibility</li>
+      <li>✅ Mentorship & growth programs</li>
+      <li>✅ DEI-centered hiring processes</li>
+    </ul>
+  
+    <div class="quote">
+      “This isn’t just a job — it’s a chance to build your future in a space that sees you, values you, and supports you.”
+    </div>
+  
+    <!-- 🔽 This is where we will insert the company description -->
+    <div id="companyDetails" style="margin-top: 30px; background: #0f100f; padding: 15px; border-radius: 8px;">
+      <h3>About the Company</h3>
+      <p id="companyDescription">Loading company details...</p>
+    </div>
+  </div>
+  
+  
+
+  <!-- Right: Your Original Form -->
+  <div class="form-side">
+    <h2>Apply for Job</h2>
+    <form id="applicationForm" enctype="multipart/form-data">
+      <input type="hidden" id="jobId" name="jobId">
+  
+      <input type="text" name="name" placeholder="Your Full Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+  
+      <!-- Label added for file input -->
+      <label for="resume">Upload Resume:</label>
+      <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+  
+      <textarea name="coverLetter" placeholder="Cover Letter (optional)" rows="5"></textarea>
+  
+      <button type="submit">Submit Application</button>
+    </form>
+  
+    <div class="message" id="responseMessage"></div>
+  </div>
+  
+</div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const jobId = urlParams.get('jobId');
+  document.getElementById('jobId').value = jobId;
+
+  const form = document.getElementById('applicationForm');
+  const messageBox = document.getElementById('responseMessage');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('http://localhost:3000/api/applications', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        window.alert("Application submitted successfully!");
+        form.reset();
+      } else {
+        window.alert("Failed to submit application.");
+      }
+
+      setTimeout(() => {
+        messageBox.textContent = '';
+      }, 10000);
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      messageBox.textContent = 'Something went wrong!';
+      messageBox.style.color = 'red';
+    }
+  });
+</script>
+<script>
+  // Fetch and show company description based on jobId
+  if (jobId) {
+    fetch(`http://localhost:3000/api/jobs/${jobId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.job) {
+          const companyDesc = data.employers.company_description || "No company description available.";
+          document.getElementById('companyDescription').textContent = companyDesc;
+        } else {
+          document.getElementById('companyDescription').textContent = "Company information not found.";
+        }
+      })
+      .catch(error => {
+        console.error('Error loading company description:', error);
+        document.getElementById('companyDescription').textContent = "Error loading company information.";
+      });
+  } else {
+    document.getElementById('companyDescription').textContent = "Invalid job ID.";
+  }
+</script>
+
+</body>
+</html>

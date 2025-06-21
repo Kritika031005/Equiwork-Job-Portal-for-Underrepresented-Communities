@@ -1,0 +1,523 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome - JStack</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background:url("images/profile-bg-1.jpg") no-repeat center center/cover;
+      color: white;
+
+    }
+
+    .profile-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 85vh;
+      padding: 40px 20px;
+    }
+
+    .profile-box {
+      background: rgba(45, 45, 45, 0.95);
+      border-radius: 18px;
+      padding: 3rem 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-box img {
+      width: 120px;
+      border-radius: 50%;
+      border: 3px solid #28a57e;
+      margin-bottom: 1rem;
+    }
+
+    .profile-box h2 {
+      color: #daeeea;
+      font-size: 2rem;
+    }
+
+    .profile-box p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin: 1rem 0 2rem;
+    }
+
+    .profile-box button {
+      padding: 1rem 2.2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      background: #28a57e;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .profile-box button:hover {
+      background: #1f7a5c;
+    }
+
+    .below-section {
+      background:#f5f7fa;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .below-section h3 {
+      color: #1f7a5c;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .below-section p {
+      color: #000000;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    .benefits {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .benefit-card {
+      background: #94949451;
+      border-radius: 14px;
+      padding: 1.5rem;
+      flex: 1 1 280px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .benefit-card i {
+      font-size: 2rem;
+      color: #28a57e;
+      margin-bottom: 0.6rem;
+    }
+
+    .benefit-card h4 {
+      color: #181818;
+      margin-bottom: 0.4rem;
+    }
+
+    .benefit-card p {
+      color: #050404;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile-box {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-wrapper">
+    <div class="profile-box">
+      <img src=images\profile-circle.256x256.png.jpg alt="User Avatar">
+      <h2>Welcome, <span id="userName">User</span>!</h2>
+      <p>You're now part of a growing community of empowered individuals. Let's get you hired!</p>
+      <button onclick="window.location.href='jobs.html'">Apply for Jobs</button>
+    </div>
+  </div>
+
+  <section class="below-section">
+    <h3>What You Can Do Now</h3>
+    <p>As a JStack member, you're ready to explore opportunities, join mentorship programs, and connect with a community built for you. Here’s what’s next:</p>
+
+    <div class="benefits">
+      <div class="benefit-card">
+        <i class='bx bx-briefcase'></i>
+        <h4>Find Jobs</h4>
+        <p>Explore jobs tailored for underrepresented candidates.</p>
+      </div>
+      <div class="benefit-card">
+        <i class='bx bx-group'></i>
+        <h4>Join the Community</h4>
+        <p>Connect with others and share your journey in safe spaces.</p>
+      </div>
+      <div class="benefit-card">
+        <i class='bx bx-star'></i>
+        <h4>Get Featured</h4>
+        <p>Verified users may be highlighted to top employers!</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    fetch("http://localhost:3000/api/current-user", {
+      credentials: 'include',
+    })
+    .then((res) => {
+      if (res.status === 401) {
+        // window.location.href = "login.html";
+      } else {
+        return res.json();
+      }
+    })
+    .then((data) => {
+      const Name = data.user.email.split('@')[0];
+      document.getElementById("userName").innerText = Name;
+    })
+    .catch((err) => {
+      console.error("Error fetching user:", err);
+    //   window.location.href = "login.html";
+    });
+  </script>
+  
+  
+
+  <footer class="footer">
+    <div class="obj-width">
+        <div class="top">
+            <div>
+                <img class ="logo" src="images/idk.png" alt="">
+                <p>Search your desired jobs</p>
+            </div>
+            <div>
+                <a href="">
+                    <i class='bx bxl-facebook-square'></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-instagram' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-youtube' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-github' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-linkedin'></i>
+                </a>
+                
+            </div>
+  
+        </div>
+        <div class="bottom">
+            <div>
+                <h3>Pojects</h3>
+                <a href="#">changelog</a>
+                <a href="#">staus</a>
+                <a href="#">licence</a>
+                <a href="#">all version</a>
+            </div>
+            <div>
+                <h3>community </h3>
+                <a href="#">Github</a>
+                <a href="#">issues</a>
+                <a href="#">projects</a>
+                <a href="#">twitter</a>
+            </div>
+            <div>
+                <h3>help</h3>
+                <a href="#">support</a>
+                <a href="#">trouble shoot</a>
+                <a href="#">contact us</a>
+            </div>
+            <div>
+                <h3>others</h3>
+                <a href="#">terms and services</a>
+                <a href="#">privacy and policy</a>
+                <a href="#">licence</a>
+                
+            </div>
+        </div>
+    </div>
+  </footer>
+  
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome - Equiwork</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background:url("images/profile-bg-1.jpg") no-repeat center center/cover;
+      color: white;
+      height: 80vh;
+
+    }
+
+    .profile-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 85vh;
+      padding: 40px 20px;
+    }
+
+    .profile-box {
+      background: rgba(45, 45, 45, 0.95);
+      border-radius: 18px;
+      padding: 3rem 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      margin-top: 40px;
+    }
+
+    .profile-box img {
+      width: 120px;
+      border-radius: 50%;
+      border: 3px solid #28a57e;
+      margin-bottom: 1rem;
+    }
+
+    .profile-box h2 {
+      color: #daeeea;
+      font-size: 2rem;
+    }
+
+    .profile-box p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin: 1rem 0 2rem;
+    }
+
+    .profile-box button {
+      padding: 1rem 2.2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      background: #28a57e;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .profile-box button:hover {
+      background: #1f7a5c;
+    }
+
+    .below-section {
+      background:#f5f7fa;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .below-section h3 {
+      color: #1f7a5c;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .below-section p {
+      color: #000000;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    .benefits {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .benefit-card {
+      background: #94949451;
+      border-radius: 14px;
+      padding: 1.5rem;
+      flex: 1 1 280px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .benefit-card i {
+      font-size: 2rem;
+      color: #28a57e;
+      margin-bottom: 0.6rem;
+    }
+
+    .benefit-card h4 {
+      color: #181818;
+      margin-bottom: 0.4rem;
+    }
+
+    .benefit-card p {
+      color: #050404;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile-box {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div id="navbar" class="obj-width">
+        <a href="index.html"><img class="logo"
+        src ="images/idk.png" alt="" ></a>
+        <ul id ="menu">
+            <li><a href ="index.html">Home</a></li>
+            <!-- <li><a href="browsejob.html">Browse Jobs</a></li> -->
+            <li class="dropdown">
+                <a href="#">Community <i class='bx bx-chevron-down'></i></a>
+                <ul class="dropdown-menu">
+                  <li><a href="community-women.html">Women</a></li>
+                  <li><a href="community-Lgbtq.html">LGBTQ+</a></li>                  
+                  <li><a href="community-minorities.html">Minorities</a></li>
+                </ul>
+              </li>                      
+            <li><a href="contact.html">Contact</a></li>
+            <!-- <li><a href="employer.html">Employer Login</a></li> -->
+            <!-- <a href="validate.html" id="w_btn" class="join-link">Join</a> -->
+            
+        </ul>
+        <i id="bar" class='bx bx-menu'></i>
+    </div>
+ </header>
+
+  <div class="profile-wrapper">
+    <div class="profile-box">
+      <img src="images/profile-circle.256x256.jpg" alt="User Avatar">
+      <h2>Welcome <span id="userName"></span>!</h2>
+      <p>You're now part of a growing community of empowered individuals. Let's get you hired!</p>
+      <button onclick="window.location.href='jobs.html'">Apply for Jobs</button>
+    </div>
+  </div>
+
+  <section class="below-section">
+    <h3>What You Can Do Now</h3>
+    <p>As a JStack member, you're ready to explore opportunities, join mentorship programs, and connect with a community built for you. Here’s what’s next:</p>
+
+    <div class="benefits">
+      <div class="benefit-card">
+        <i class='bx bx-briefcase'></i>
+        <h4>Find Jobs</h4>
+        <p>Explore jobs tailored for underrepresented candidates.</p>
+      </div>
+      <div class="benefit-card">
+        <i class='bx bx-group'></i>
+        <h4>Join the Community</h4>
+        <p>Connect with others and share your journey in safe spaces.</p>
+      </div>
+      <div class="benefit-card">
+        <i class='bx bx-star'></i>
+        <h4>Get Featured</h4>
+        <p>Verified users may be highlighted to top employers!</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    fetch("http://localhost:3000/api/current-user", {
+      credentials: 'include',
+    })
+    .then((res) => {
+      if (res.status === 401) {
+        // window.location.href = "login.html";
+      } else {
+        return res.json();
+      }
+    })
+    .then((data) => {
+      document.getElementById("userName").innerText = data.user.first_name;
+    })
+    .catch((err) => {
+      console.error("Error fetching user:", err);
+    //   window.location.href = "login.html";
+    });
+  </script>
+  
+  
+
+  <footer class="footer">
+    <div class="obj-width">
+        <div class="top">
+            <div>
+                <img class ="logo" src="images/idk.png" alt="">
+                <p>Search your desired jobs</p>
+            </div>
+            <div>
+                <a href="">
+                    <i class='bx bxl-facebook-square'></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-instagram' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-youtube' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-github' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-linkedin'></i>
+                </a>
+                
+            </div>
+  
+        </div>
+        <div class="bottom">
+            <div>
+                <h3>Pojects</h3>
+                <a href="#">changelog</a>
+                <a href="#">staus</a>
+                <a href="#">licence</a>
+                <a href="#">all version</a>
+            </div>
+            <div>
+                <h3>community </h3>
+                <a href="#">Github</a>
+                <a href="#">issues</a>
+                <a href="#">projects</a>
+                <a href="#">twitter</a>
+            </div>
+            <div>
+                <h3>help</h3>
+                <a href="#">support</a>
+                <a href="#">trouble shoot</a>
+                <a href="contact.html">contact us</a>
+            </div>
+            <div>
+                <h3>others</h3>
+                <a href="#">terms and services</a>
+                <a href="#">privacy and policy</a>
+                <a href="#">licence</a>
+                
+            </div>
+        </div>
+    </div>
+  </footer>
+  
+
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      .login-wrapper {
+        display: flex;
+        min-height: 100vh;
+        padding-bottom: 5rem;
+        flex-wrap: wrap;
+      }
+
+      .login-left {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 100px;
+        align-items: center;
+        background: linear-gradient(rgba(20, 20, 20, 0.7), rgba(51, 52, 52, 0.7)), url("images/employer.jpg");
+        padding: 2rem;
+      }
+
+      .login-container {
+        width: 100%;
+        max-width: 450px;
+        background: rgb(47, 45, 45);
+        padding: 2rem;
+        border-radius: 15px;
+        margin-top: 80px;
+      }
+
+      .login-container h2 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #f3fffc;
+      }
+      .login-container p {
+        padding-bottom: 2rem;
+        color: #f3fffc;
+        text-align: center;
+      }
+
+      .login-container input {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #877b7b;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      .login-container button {
+        width: 100%;
+        padding: 1rem;
+        background-color: #2aab8d;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+      
+      .login-container form label {
+        display: block;
+        margin: 12px 0 5px;
+        color: #f3fffc;
+        font-weight: 500;
+      }
+      
+      .login-container form input,
+      .login-container form select,
+      .login-container form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #888;
+        border-radius: 8px;
+        font-size: 1rem;
+        background: white;
+        color: #333;
+      }
+      
+      .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0 20px;
+      }
+      
+      .checkbox-group label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: normal;
+        color: #f3fffc;
+        cursor: pointer;
+        margin: 6px 0;
+      }
+      
+      .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+      }
+
+      .login-right {
+        flex: 1;
+        background-image: url("images/employer.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .forgot-password {
+        display: block;
+        text-align: right;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        color: #ecfffb;
+        text-decoration: none;
+      }
+
+      .divider {
+        text-align: center;
+        margin: 2rem 0;
+        color: #888;
+        font-size: 0.9rem;
+        position: relative;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background-color: #ccc;
+      }
+
+      .divider::before {
+        left: 0;
+      }
+
+      .divider::after {
+        right: 0;
+      }
+
+      .social-login {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .google-btn,
+      .facebook-btn {
+        background-color: #f5f5f5;
+        border: none;
+        padding: 0.8rem;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .google-btn i {
+        color: #db4437;
+      }
+
+      .facebook-btn i {
+        color: #1877f2;
+      }
+
+      @media (max-width: 768px) {
+        .login-wrapper {
+          flex-direction: column;
+        }
+        .login-right {
+          height: 40vh;
+          width: 100%;
+        }
+        .login-container {
+          width: 100%;
+          max-width: 400px;
+          background: white;
+          padding: 1rem;
+          border-radius: 15px;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <header>
+      <div id="navbar" class="obj-width">
+          <a href="index.html"><img class="logo"
+          src ="images/idk.png" alt="" ></a>
+          <ul id ="menu">
+              <li><a href ="index.html">Home</a></li>
+              <!-- <li><a href="browsejob.html">Browse Jobs</a></li> -->
+              <li class="dropdown">
+                  <a href="#">Community <i class='bx bx-chevron-down'></i></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="community-women.html">Women</a></li>
+                    <li><a href="community-Lgbtq.html">LGBTQ+</a></li>                    
+                    <li><a href="community-minorities.html">Minorities</a></li>
+                  </ul>
+                </li>                      
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="employer.html">Employer Login</a></li>
+              <a href="validate.html" id="w_btn" class="join-link">Join</a>
+              
+          </ul>
+          <i id="bar" class='bx bx-menu'></i>
+      </div>
+   </header>
+
+    <div class="login-wrapper">
+      <div class="login-left">
+        <div class="login-container" id="loginForm">
+          <h2>Employer Login</h2>
+          <input type="email" id="email" placeholder="Your Company Email" required>
+          <input type="password" id="password" placeholder="Password" required>
+          <a href="#" class="forgot-password">Forgot Password?</a>
+          <button onclick="login()">Login</button>
+          <div class="divider">or</div>
+          <div class="social-login">
+            <button class="google-btn"><i class='bx bxl-google'></i> Continue with Google</button>
+            <button class="facebook-btn"><i class='bx bxl-facebook'></i> Continue with Facebook</button>
+          </div>
+        </div>
+
+        <div class="login-container" id="profileSection" style="display: none;">
+          <h2>Welcome, <span id="companyName"></span></h2>
+          <p>Ready to post new jobs?</p>
+          <button onclick="showJobForm()">Post a New Job</button>
+          <button style="background: #dc3545; margin-top:1rem;" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="login-container" id="postJobForm" style="display: none;">
+          <h2>Post a Job</h2>
+          <form id="jobPostForm">
+            <label for="title">Job Title</label>
+            <input type="text" id="title" name="title" required />
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" required />
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" name="salary" />
+            <label for="jobType">Job Type</label>
+            <select id="jobType" name="jobType" required>
+              <option value="">Select Job Type</option>
+              <option>Full-Time</option>
+              <option>Part-Time</option>
+              <option>Internship</option>
+              <option>Remote</option>
+            </select>
+            <label for="industry">Industry</label>
+            <input type="text" id="industry" name="industry" required />
+            <label>Category (select at least one)</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="category" value="Women" /> Women</label>
+              <label><input type="checkbox" name="category" value="Minorities" /> Minorities</label>
+              <label><input type="checkbox" name="category" value="LGBTQ+" /> LGBTQ+</label>
+            </div>
+            <label for="contactEmail">Contact Email</label>
+            <input type="email" id="contactEmail" name="contactEmail" required />
+            <label for="description">Job Description</label>
+            <textarea id="description" name="description" required></textarea>
+            <button type="submit">Post Job</button>
+          </form>
+        </div>
+      </div>
+      <div class="login-right"></div>
+    </div>
+
+    <script>
+      // const login = () => {
+      //   const email = document.getElementById("email").value;
+      //   const password = document.getElementById("password").value;
+    
+      //   // Send the login request to the backend
+      //   fetch('http://localhost:3000/api/employer/login', {  // Update with your server URL
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({ email, password })
+      //   })
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     if (data.message === 'Login successful') {
+      //       // Show profile and job posting form
+      //       window.alert("Login successful!!")
+      //       document.getElementById("loginForm").style.display = "none";
+      //       document.getElementById("profileSection").style.display = "block";
+      //       const companyName = data.employer.email.split('@')[0];
+      //       document.getElementById('companyName').innerText = companyName;
+      // } else {
+      //       alert("Invalid login details.");
+      //     }
+      //   })
+      //   .catch(error => {
+      //     console.error('Error:', error);
+      //     alert("There was an error processing your request.");
+      //   });
+      // }
+      const login = () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  fetch('http://localhost:3000/api/employer/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+     credentials: "include"
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Server responded with status " + response.status);
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (data.message === 'Login successful' && data.employer) {
+  window.alert("Login successful!!");
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("profileSection").style.display = "block";
+
+  const companyName = data.employer.email.split('@')[0];
+  document.getElementById('companyName').innerText = companyName;
+} else {
+  alert("Invalid login details.");
+}
+
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert("There was an error processing your login.");
+  });
+}
+
+    
+      const showJobForm = () => {
+        document.getElementById("profileSection").style.display = "none";
+        document.getElementById("postJobForm").style.display = "block";
+      }
+    
+      const logout = () => {
+        document.getElementById("profileSection").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+      }
+    </script>
+   <script>
+    document.getElementById("jobPostForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+  
+      const formData = new FormData(this);
+      const jobData = {};
+  
+      formData.forEach((value, key) => {
+        // If multiple checkboxes with same name (like category)
+        if (key === "category") {
+          if (!jobData[key]) jobData[key] = [];
+          jobData[key].push(value);
+        } else {
+          jobData[key] = value;
+        }
+      });
+  
+      fetch('http://localhost:3000/api/post-job', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jobData),
+        credentials: "include"
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert("Job posted successfully!");
+          document.getElementById('jobPostForm').reset();
+          document.getElementById('postJobForm').style.display = "none";
+          document.getElementById('profileSection').style.display = "block";
+        } else {
+          alert("Failed to post job.");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("There was an error posting the job.");
+      });
+    });
+  </script>
+  <section class="benefits-section sec-space obj-width">
+    <h2 class="section-title">Why Post With Us?</h2>
+    <p class="section-subtitle">Join hundreds of inclusive employers making a difference.</p>
+  
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <i class='bx bx-target-lock'></i>
+        <h3>Targeted Talent Pool</h3>
+        <p>Access verified candidates from underrepresented communities across India.</p>
+      </div>
+  
+      <div class="benefit-card">
+        <i class='bx bx-bar-chart-alt-2'></i>
+        <h3>Boost Your DEI Goals</h3>
+        <p>Support your diversity, equity & inclusion strategy with purpose-driven hiring.</p>
+      </div>
+  
+      <div class="benefit-card">
+        <i class='bx bx-star'></i>
+        <h3>Featured Employer Badge</h3>
+        <p>Earn recognition on our homepage and community pages as a top inclusive employer.</p>
+      </div>
+  
+      <div class="benefit-card">
+        <i class='bx bx-time-five'></i>
+        <h3>Post Jobs in Minutes</h3>
+        <p>Simple job posting process — no complex dashboard or learning curve.</p>
+      </div>
+    </div>
+  </section>
+    <footer class="footer">
+      <div class="obj-width">
+          <div class="top">
+              <div>
+                  <img class ="logo" src="images/idk.png" alt="">
+                  <p>Search your desired jobs</p>
+              </div>
+              <div>
+                  <a href="">
+                      <i class='bx bxl-facebook-square'></i>
+                  </a>
+                  <a href="">
+                      <i class='bx bxl-instagram' ></i>
+                  </a>
+                  <a href="">
+                      <i class='bx bxl-twitter'></i>
+                  </a>
+                  <a href="">
+                      <i class='bx bxl-youtube' ></i>
+                  </a>
+                  <a href="">
+                      <i class='bx bxl-github' ></i>
+                  </a>
+                  <a href="">
+                      <i class='bx bxl-linkedin'></i>
+                  </a>
+                  
+              </div>
+
+          </div>
+          <div class="bottom">
+              <div>
+                  <h3>Pojects</h3>
+                  <a href="#">changelog</a>
+                  <a href="#">staus</a>
+                  <a href="#">licence</a>
+                  <a href="#">all version</a>
+              </div>
+              <div>
+                  <h3>community </h3>
+                  <a href="#">Github</a>
+                  <a href="#">issues</a>
+                  <a href="#">projects</a>
+                  <a href="#">twitter</a>
+              </div>
+              <div>
+                  <h3>help</h3>
+                  <a href="#">support</a>
+                  <a href="#">trouble shoot</a>
+                  <a href="contact.html">contact us</a>
+              </div>
+              <div>
+                  <h3>others</h3>
+                  <a href="#">terms and services</a>
+                  <a href="#">privacy and policy</a>
+                  <a href="#">licence</a>
+                  
+              </div>
+          </div>
+      </div>
+   </footer>
+
+  </body>
+</html>

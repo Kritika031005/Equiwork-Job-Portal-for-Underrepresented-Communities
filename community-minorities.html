@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minority Community</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+   .hollow-parallax h1 {
+  font-size: 8vw;
+  font-weight: 900;
+  background: linear-gradient(to bottom, rgba(45, 34, 34, 0.4), rgba(12, 12, 12, 0.813)), url("images/young-woman-working-laptop.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  z-index: 2;
+  position: relative;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-shadow:none;
+  width: 60%; 
+}
+
+.hollow-parallax {
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.4), rgba(4, 3, 3, 0.4)),
+              url("images/min-bg.jpg") no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  text-align: left;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div id="navbar" class="obj-width">
+        <a href="index.html"><img class="logo"
+        src ="images/idk.png" alt="" ></a>
+        <ul id ="menu">
+            <li><a href ="index.html">Home</a></li>
+            <!-- <li><a href="browsejob.html">Browse Jobs</a></li> -->
+            <li class="dropdown">
+                <a href="#">Community <i class='bx bx-chevron-down'></i></a>
+                <ul class="dropdown-menu">
+                  <li><a href="community-women.html">Women</a></li>
+                  <li><a href="community-Lgbtq.html">LGBTQ+</a></li>
+                  
+                  <li><a href="community-minorities.html">Minorities</a></li>
+                </ul>
+              </li>                      
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="employer.html">Employer Login</a></li>
+            <a href="validate.html" id="w_btn" class="join-link">Join</a>
+            
+        </ul>
+        <i id="bar" class='bx bx-menu'></i>
+    </div>
+ </header>
+<section class="hollow-parallax" >
+  <div class="hollow-content">
+  <h1>Supporting Minorities</h1>
+  <p style="text-align: left;">We're committed to ensuring fair opportunities for people from minority communities in the workforce.</p>
+  </div>
+</section>
+<section class="sec-space obj-width">
+  <h2>Welcome to the Minority Empowerment Community</h2>
+  <p>We help break down barriers, providing access to jobs, mentorship, and growth for underrepresented communities.</p>
+</section>
+<section class="sec-space obj-width mission-block">
+  <h2>Our Mission</h2>
+  <p>To uplift and empower minority talent across industries through targeted support, inclusion programs, and employer collaborations.</p>
+</section>
+
+
+
+<section class="sec-space obj-width">
+  <h2>Find Your Perfect Job</h2>
+  <div class="job-search-filters">
+    <input type="text" id="searchTitle" placeholder="🔍 Job Title e.g. Developer">
+    <input type="text" id="searchLocation" placeholder="📍 Location e.g. Remote, Delhi">
+    <select id="searchType">
+      <option value="">All Job Types</option>
+      <option value="Remote">Remote</option>
+      <option value="Full Time">Full Time</option>
+      <option value="Part Time">Part Time</option>
+      <option value="Freelancer">Freelancer</option>
+    </select>
+    <button id="g_btn" onclick="filterJobs()">Search</button>
+  </div>
+</section>
+
+
+
+<section class="sec-space obj-width">
+  <h2>Resources to Empower Minority Professionals</h2>
+  <p>Explore community-driven tools and programs designed to support minority talent in the workforce.</p>
+
+  <div class="resources-grid">
+    <div class="resource-card">
+      <h3>📚 Tech Scholarships for Minorities</h3>
+      <ul>
+        <li><a href="https://buildyourfuture.withgoogle.com/scholarships" >Google Developer Scholarships</a></li>
+        <li><a href="https://www.codepath.org/" >CodePath Diversity Programs</a></li>
+        <li><a href="https://www.udacity.com/scholarships">Udacity Scholarships for Inclusion</a></li>
+      </ul>
+    </div>
+
+    <div class="resource-card">
+      <h3>🧠 Interview Prep</h3>
+      <ul>
+        <li><a href="https://www.womentech.net/blog/50-top-interview-questions-and-answers-women-in-tech">Top 50 Questions Asked in Tech</a></li>
+        <li><a href="resumebuilder/index.html">Resume Builder Toolkit</a></li>
+        <li><a href="https://remasto.com/?gad_source=1&gbraid=0AAAAAqhI80_mqCdGnYMYidPRojWqa_KMU&gclid=Cj0KCQjw_JzABhC2ARIsAPe3ynrWbt79aSw66NdEDPI_3Vassk3uS9txz3lMFHwHmtplFcLdl7nG9LAaAj-0EALw_wcB">Mock Interviews (Free)</a></li>
+      </ul>
+    </div>
+
+    <div class="resource-card">
+      <h3>🌐 Diversity Hiring Portals</h3>
+      <ul>
+        <li><a href="http://debbah.com/bipoc" >Remote Jobs for BIPOC</a></li>
+        <li><a href="https://www.inclusiveemployers.co.uk/" >Inclusive Employers Network</a></li>
+        <li><a href="https://www.linkedin.com/company/clearqhub" >LinkedIn Opportunity Hub</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec-space obj-width" style="background-color: #a7bab4b0; border-radius: 20px;">
+  <h2 style="padding-left: 50px;">Success Stories</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card" style="padding-left: 50px;">
+      <p>"I got into a tech bootcamp through this site and now work at a top startup!"</p>
+      <strong>— Jamal B., Frontend Developer</strong>
+    </div>
+    <div class="testimonial-card" style="padding-left: 50px;">
+      <p>"The community support helped me overcome imposter syndrome in my new role."</p>
+      <strong>— Priya N., Product Manager</strong>
+    </div>
+    <div class="testimonial-card" style="padding-left: 50px;">
+      <p>"Being seen and celebrated as a Black creator changed my career."</p>
+      <strong>— DeShawn L., Digital Marketer</strong>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec-space obj-width">
+  <h2>Ready to Begin?</h2>
+  <p style="padding-bottom: 2rem;">Get verified and apply to companies committed to diversity and inclusion.</p>
+  <a href="validate.html" id="g_btn">Get Verified</a>
+</section>
+<footer class="footer">
+  <div class="obj-width">
+      <div class="top">
+          <div>
+              <img class ="logo" src="images/idk.png" alt="">
+              <p>Search your desired jobs</p>
+          </div>
+          <div>
+              <a href="">
+                  <i class='bx bxl-facebook-square'></i>
+              </a>
+              <a href="">
+                  <i class='bx bxl-instagram' ></i>
+              </a>
+              <a href="">
+                  <i class='bx bxl-twitter'></i>
+              </a>
+              <a href="">
+                  <i class='bx bxl-youtube' ></i>
+              </a>
+              <a href="">
+                  <i class='bx bxl-github' ></i>
+              </a>
+              <a href="">
+                <i class='bx bxl-linkedin'></i>
+            </a>
+              
+          </div>
+
+      </div>
+      <div class="bottom">
+          <div>
+              <h3>Pojects</h3>
+              <a href="#">changelog</a>
+              <a href="#">staus</a>
+              <a href="#">licence</a>
+              <a href="#">all version</a>
+          </div>
+          <div>
+              <h3>community </h3>
+              <a href="#">Github</a>
+              <a href="#">issues</a>
+              <a href="#">projects</a>
+              <a href="#">twitter</a>
+          </div>
+          <div>
+              <h3>help</h3>
+              <a href="#">support</a>
+              <a href="#">trouble shoot</a>
+              <a href="contact.html">contact us</a>
+          </div>
+          <div>
+              <h3>others</h3>
+              <a href="#">terms and services</a>
+              <a href="#">privacy and policy</a>
+              <a href="#">licence</a>
+              
+          </div>
+      </div>
+  </div>
+</footer>
+<script src="toggle.js"></script>
+<script src="script.js"></script>
+<script>
+  function filterJobs() {
+    alert("Please login to view job listings.");
+    window.location.href = "validate.html"; // Redirect to login/signup page
+  }
+</script>
+
+</body>
+</html>

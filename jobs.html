@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Browse Jobs</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7f6;
+    }
+
+    .search-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      background: #2d2d2d;
+      padding: 20px;
+    }
+
+    .search-bar input, .search-bar select {
+      padding: 14px;
+      width: 260px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .search-bar button {
+      background: #2e7d66;
+      color: white;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background: #265e50;
+    }
+
+    h2 {
+      margin: 30px 20px 15px;
+      font-size: 24px;
+      color: #2e7d66;
+    }
+
+    .jobs-container {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      align-items: start;
+    }
+
+    .job-card {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+      min-height: 300px; /* normal height */
+    }
+
+    .job-card.expanded {
+      min-height: 500px; /* expanded height */
+    }
+
+    .job-card h3 {
+      margin: 0 0 10px;
+      color: #2e7d66;
+    }
+
+    .job-card p {
+      margin: 4px 0;
+      color: #333;
+      font-size: 14px;
+    }
+    /* .bx bxs-home{
+      margin-top: 12px;
+      background: #2e7d66;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      transition: background 0.3s ease;
+
+    } */
+
+    .apply-btn {
+      margin-top: 12px;
+      background: #2e7d66;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .apply-btn:hover {
+      background: #265e50;
+    }
+
+    .no-jobs {
+      text-align: center;
+      margin: 50px 0;
+      color: #444;
+      font-size: 16px;
+    }
+
+    .more-details {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .more-details.show {
+      display: block;
+    }
+
+    .show-more-btn {
+      margin-top: 10px;
+      background: none;
+      border:none ;
+      color: #2e7d66;
+      cursor: pointer;
+      font-size: 14px;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="search-bar">
+  <input type="text" id="jobTitle" placeholder="Job title, keywords or company">
+  <input type="text" id="jobLocation" placeholder="City, state, or remote">
+  <select id="jobType">
+    <option value="">Job Type</option>
+    <option value="Full-Time">Full Time</option>
+    <option value="Part-Time">Part Time</option>
+    <option value="Remote">Remote</option>
+    <option value="Internship">Internship</option>
+  </select>
+  <select id="category">
+    <option value="">Categories</option>
+    <option value="Women">Women</option>
+    <option value="Minorities">Minorities</option>
+    <option value="LGBTQ+">LGBTQ+</option>
+  </select>
+  <button onclick="applyFilters()">Apply Filters</button>
+  <button onclick="window.location.href='index.html'">LogOut</button>
+  <!-- <i class='bx bxs-home' ></i> -->
+</div>
+
+<h2>Available Jobs</h2>
+<div class="jobs-container" id="jobsContainer"></div>
+
+<script>
+const jobsContainer = document.getElementById('jobsContainer');
+
+function fetchJobs() {
+  jobsContainer.innerHTML = '<p class="no-jobs">Loading jobs...</p>';
+
+  fetch('http://localhost:3000/api/jobs')
+    .then(response => response.json())
+    .then(data => {
+      displayJobs(data.jobs);
+    })
+    .catch(error => {
+      console.error('Error loading jobs:', error);
+      jobsContainer.innerHTML = '<p class="no-jobs">Error fetching jobs!</p>';
+    });
+}
+
+function applyFilters() {
+  const title = document.getElementById('jobTitle').value.toLowerCase();
+  const location = document.getElementById('jobLocation').value.toLowerCase();
+  const type = document.getElementById('jobType').value.toLowerCase();
+  const category = document.getElementById('category').value.toLowerCase();
+
+  fetch('http://localhost:3000/api/jobs')
+    .then(response => response.json())
+    .then(data => {
+      const filteredJobs = data.jobs.filter(job => {
+        const jobTitle = (job.title || '').toLowerCase();
+        const jobLocation = (job.location || '').toLowerCase();
+        const jobType = (job.job_type || '').toLowerCase();
+        const jobCategory = (job.category || '').toLowerCase();
+
+        return (!title || jobTitle.includes(title)) &&
+               (!location || jobLocation.includes(location)) &&
+               (!type || jobType === type) &&
+               (!category || jobCategory.split(',').map(c => c.trim()).includes(category));
+      });
+
+      displayJobs(filteredJobs);
+    })
+    .catch(error => {
+      console.error('Error applying filters:', error);
+      jobsContainer.innerHTML = '<p class="no-jobs">Error filtering jobs!</p>';
+    });
+}
+
+function displayJobs(jobs) {
+  jobsContainer.innerHTML = '';
+
+  if (jobs.length === 0) {
+    jobsContainer.innerHTML = '<p class="no-jobs">No jobs found. Try different filters!</p>';
+    return;
+  }
+
+  jobs.forEach(job => {
+    const jobCard = `
+      <div class="job-card">
+        <h3>${job.title}</h3>
+        <p><strong>Location:</strong> ${job.location}</p>
+        <p><strong>Salary:</strong> ₹${parseFloat(job.salary).toLocaleString()}</p>
+        <p><strong>Type:</strong> ${job.job_type}</p>
+
+        <div class="more-details">
+          <p><strong>Industry:</strong> ${job.industry}</p>
+          <p><strong>Category:</strong> ${job.category}</p>
+          <p><strong>Contact Email:</strong> <a href="mailto:${job.contact_email}">${job.contact_email}</a></p>
+          <p><strong>Description:</strong> ${job.description}</p>
+          <p><strong>Posted At:</strong> ${new Date(job.posted_at).toLocaleString()}</p>
+        </div>
+
+        <button class="show-more-btn" onclick="toggleDetails(this)">Show More</button>
+        <a class="apply-btn" href="apply.html?jobId=${job.id}">Apply Now</a>
+      </div>
+    `;
+    jobsContainer.insertAdjacentHTML('beforeend', jobCard);
+  });
+}
+
+function toggleDetails(button) {
+  const jobCard = button.parentElement;
+  const moreDetails = jobCard.querySelector('.more-details');
+
+  if (moreDetails.classList.contains('show')) {
+    moreDetails.classList.remove('show');
+    jobCard.classList.remove('expanded');
+    button.textContent = 'Show More';
+  } else {
+    moreDetails.classList.add('show');
+    jobCard.classList.add('expanded');
+    button.textContent = 'Show Less';
+  }
+}
+
+
+// Initial fetch
+fetchJobs();
+</script>
+
+<footer class="footer">
+  <div class="obj-width">
+    <div class="top">
+      <div>
+        <img class="logo" src="images/idk.png" alt="">
+        <p>Search your desired jobs</p>
+      </div>
+      <div>
+        <a href="#"><i class='bx bxl-facebook-square'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+        <a href="#"><i class='bx bxl-github'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>
+        <h3>Projects</h3>
+        <a href="#">Changelog</a>
+        <a href="#">Status</a>
+        <a href="#">License</a>
+        <a href="#">All Versions</a>
+      </div>
+      <div>
+        <h3>Community</h3>
+        <a href="#">Github</a>
+        <a href="#">Issues</a>
+        <a href="#">Projects</a>
+        <a href="#">Twitter</a>
+      </div>
+      <div>
+        <h3>Help</h3>
+        <a href="#">Support</a>
+        <a href="#">Troubleshoot</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div>
+        <h3>Others</h3>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">License</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html> 

@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Us - Equiwork</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1f1f1f, #3c3c3c);
+      margin: 0;
+      color: white;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      margin-top: 140px;
+      margin-bottom: 80px;
+      background: #2d2d2d;
+      padding: 2rem;
+      border-radius: 14px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #daeeea;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      padding: 0.9rem;
+      margin-top: 0.4rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #28a57e;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #1c7a5e;
+    }
+
+    .switch-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .switch-link span {
+      color: #28a57e;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="navbar" class="obj-width">
+        <a href="index.html"><img class="logo"
+        src ="images/idk.png" alt="" ></a>
+        <ul id ="menu">
+            <li><a href ="index.html">Home</a></li>
+            <!-- <li><a href="browsejob.html">Browse Jobs</a></li> -->
+            <li class="dropdown">
+                <a href="#">Community <i class='bx bx-chevron-down'></i></a>
+                <ul class="dropdown-menu">
+                  <li><a href="community-women.html">Women</a></li>
+                  <li><a href="community-Lgbtq.html">LGBTQ+</a></li>                  
+                  <li><a href="community-minorities.html">Minorities</a></li>
+                </ul>
+              </li>                      
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="employer.html">Employer Login</a></li>
+            <a href="validate.html" id="w_btn" class="join-link">Join</a>
+            
+        </ul>
+        <i id="bar" class='bx bx-menu'></i>
+    </div>
+ </header>
+
+  <div class="container">
+    <!-- LOGIN FORM -->
+    <div id="login-container">
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" placeholder="Enter your email" required>
+
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <div class="switch-link">
+        <p>New user? <span onclick="toggleForms()">Register here</span></p>
+      </div>
+    </div>
+
+    <!-- REGISTRATION FORM -->
+    <div id="register-container" class="hidden">
+      <h2>Register</h2>
+      <form id="register-form">
+        <label for="fname">First Name*</label>
+        <input type="text" id="fname" pattern="[A-Za-z]+" title="Only letters allowed" required>
+
+        <label for="lname">Last Name*</label>
+        <input type="text" id="lname" pattern="[A-Za-z]+" title="Only letters allowed" required>
+
+        <label for="aadhaar">Aadhaar Number*</label>
+        <input type="text" id="aadhaar" maxlength="12" pattern="\d{12}" title="Enter 12 Digits" required>
+
+        <label for="reg-email">Email*</label>
+        <input type="email" id="reg-email" required>
+
+        <label for="reg-password">Password*</label>
+        <input type="password" id="reg-password" required>
+
+        <label for="phone">Phone Number*</label>
+        <input type="tel" id="phone" maxlength="10" pattern="[0-9]{10}" title="Enter 10 Digits" required>
+
+        <label for="interest">Interest Area</label>
+        <select id="interest" required>
+          <option disabled selected>Select an option</option>
+          <option>Job Seeker</option>
+          <option>Volunteer</option>
+        </select>
+
+        <label for="message">Tell us more</label>
+        <textarea id="message" rows="3" maxlength="250" placeholder="Optional message..."></textarea>
+
+        <button type="submit">Register</button>
+      </form>
+
+      <div class="switch-link">
+        <p>Already registered? <span onclick="toggleForms()">Login here</span></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="obj-width">
+        <div class="top">
+            <div>
+                <img class ="logo" src="images/idk.png" alt="">
+                <p>Search your desired jobs</p>
+            </div>
+            <div>
+                <a href="">
+                    <i class='bx bxl-facebook-square'></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-instagram' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-youtube' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-github' ></i>
+                </a>
+                <a href="">
+                    <i class='bx bxl-linkedin'></i>
+                </a>
+                
+            </div>
+  
+        </div>
+        <div class="bottom">
+            <div>
+                <h3>Pojects</h3>
+                <a href="#">changelog</a>
+                <a href="#">staus</a>
+                <a href="#">licence</a>
+                <a href="#">all version</a>
+            </div>
+            <div>
+                <h3>community </h3>
+                <a href="#">Github</a>
+                <a href="#">issues</a>
+                <a href="#">projects</a>
+                <a href="#">twitter</a>
+            </div>
+            <div>
+                <h3>help</h3>
+                <a href="#">support</a>
+                <a href="#">trouble shoot</a>
+                <a href="contact.html">contact us</a>
+            </div>
+            <div>
+                <h3>others</h3>
+                <a href="#">terms and services</a>
+                <a href="#">privacy and policy</a>
+                <a href="#">licence</a>
+                
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function toggleForms() {
+        document.getElementById("login-container").classList.toggle("hidden");
+        document.getElementById("register-container").classList.toggle("hidden");
+      }
+
+      window.toggleForms = toggleForms;
+
+      document.getElementById("register-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const fname = document.getElementById("fname").value.trim();
+        const lname = document.getElementById("lname").value.trim();
+        const aadhaar = document.getElementById("aadhaar").value.trim();
+        const email = document.getElementById("reg-email").value.trim();
+        const password = document.getElementById("reg-password").value;
+        const phone = document.getElementById("phone").value.trim();
+        const interest = document.getElementById("interest").value;
+        const message = document.getElementById("message").value.trim();
+
+        if (!email || !password || !fname || !lname || !aadhaar) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        fetch("http://localhost:3000/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fname, lname, aadhaar, email, password, phone, interest, message,
+          }),
+          credentials: 'include',
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === "Registration successful!") {
+            alert("Registration successful!");
+            window.location.href = "index.html";
+          } else {
+            alert(data.message || "Something went wrong. Please try again.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("An error occurred during registration. Please try again.");
+        });
+      });
+
+      document.getElementById("login-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById("login-email").value.trim();
+        const password = document.getElementById("login-password").value;
+
+        fetch("http://localhost:3000/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+          credentials: 'include',
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === "Login successful") {
+            alert("Login successful!");
+            window.location.href = "user-profile.html";
+          } else {
+            alert(data.message || "Invalid credentials!");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("An error occurred during login. Please try again.");
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
