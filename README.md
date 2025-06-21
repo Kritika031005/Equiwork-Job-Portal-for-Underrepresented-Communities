@@ -31,24 +31,24 @@ A web-based job portal designed to support underrepresented communities—especi
 
 ---
 
-🎯 Target Users
-Women seeking job opportunities
-Minorities (based on ethnicity, caste, etc.)
-LGBTQ+ individuals
-Inclusive employers
+**🎯 Target Users**
+- Women seeking job opportunities
+- Minorities (based on ethnicity, caste, etc.)
+- LGBTQ+ individuals
+- Inclusive employers
 
 ---
 
-📌 Future Scope
-AI-based job matching
-Mobile app development
-Real-time notifications
-Multilingual support
-Employer feedback system
+**📌 Future Scope**
+- AI-based job matching
+- Mobile app development
+- Real-time notifications
+- Multilingual support
+- Employer feedback system
 
 ---
 
-🤝 Contributing
+**🤝 Contributing**
 Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.
 
 ---
